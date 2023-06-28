@@ -56,11 +56,11 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 800,
         "resizable": true,
         "title": "Board Voter",
         "transparent": true,
-        "width": 800,
+        "width": 1000,
         "fileDropEnabled": false
       }
     ]
