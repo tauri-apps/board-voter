@@ -2,7 +2,7 @@
   <v-container style="max-width: 21cm">
     <v-row>
       <v-col align="center">
-        <h1>Tauri Board Vote 2023</h1>
+        <h1>Tauri Board Election 2023</h1>
         <p>
           For each of the following candidates, are you in favor of them
           becoming a Tauri Board Director?
@@ -56,7 +56,7 @@
                   >#{{ index + 1 }}</span
                 >
               </v-col>
-              <v-col cols="3" sm="2" md="1">
+              <v-col cols="2" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
                   <v-img :src="element.avatar"></v-img>
                 </v-avatar>
@@ -66,7 +66,7 @@
                   element.name
                 }}</v-card-title>
               </v-col>
-              <v-col align="end">
+              <v-col class="right">
                 <v-btn
                   color="info"
                   height="100"
@@ -95,7 +95,7 @@
         <template #item="{ element, index }">
           <v-card class="person-card">
             <v-row align="center">
-              <v-col cols="3" sm="2" md="1">
+              <v-col cols="3" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
                   <v-img :src="element.avatar"></v-img>
                 </v-avatar>
@@ -105,7 +105,7 @@
                   element.name
                 }}</v-card-title>
               </v-col>
-              <v-col align="end">
+              <v-col class="right">
                 <v-btn
                   color="info"
                   height="100"
@@ -135,7 +135,7 @@
         <template #item="{ element, index }">
           <v-card class="person-card">
             <v-row align="center">
-              <v-col cols="3" sm="2" md="1">
+              <v-col cols="3" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
                   <v-img :src="element.avatar"></v-img>
                 </v-avatar>
@@ -145,7 +145,7 @@
                   element.name
                 }}</v-card-title>
               </v-col>
-              <v-col align="end">
+              <v-col class="right">
                 <v-btn
                   color="info"
                   height="100"
@@ -245,5 +245,9 @@ export default {
   padding: 0.5cm;
   display: flex;
   flex-direction: column;
+}
+
+.right {
+  text-align: right;
 }
 </style>
