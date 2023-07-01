@@ -1,0 +1,6 @@
+.nuxt
+Cargo.lock
+dist
+node_modules
+pnpm-lock.yaml
+target
