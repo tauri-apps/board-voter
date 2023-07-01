@@ -2,18 +2,18 @@
     <div class="col">
         <div class="col center">
             <a class="submit-button"
-                :href="mailto + '?subject=' + mailtoSubject + '&body=' + mailtoBody + '%0D%0A%0D%0AVoted Yes%0D%0A' + list1.map(val => val.name).join('%0D%0A') + '%0D%0A%0D%0AVoted No%0D%0A' + list2.map(val => val.name).join('%0D%0A')">Submit</a>
+                :href="mailto + '?subject=' + mailtoSubject + '&body=' + mailtoBody + '%0D%0A%0D%0AVoted Yes%0D%0A' + yesList.map(val => val.name).join('%0D%0A') + '%0D%0A%0D%0AVoted No%0D%0A' + noList.map(val => val.name).join('%0D%0A')">Submit</a>
         </div>
         <div class="col center">
             <h3>Yes</h3>
             <p>These are people you are voting yes for. The higher they are in the list the more you want to see them voted
                 in.</p>
-            <draggable class="list-group" :list="list1" group="people" @change="log" itemKey="name">
+            <draggable class="list-group" :list="yesList" group="people" @change="log" itemKey="name">
                 <template #item="{ element, index }">
                     <div class="list-group-item">
                         <img :src="element.avatar">
                         <span>{{ element.name }} {{ index }}</span>
-                        <a :href="element.intro">Intro</a>
+                        <a :href="element.intro" target="_blank">Intro</a>
                     </div>
                 </template>
             </draggable>
@@ -22,25 +22,12 @@
         <div class="col center">
             <h3>No</h3>
             <p>These are people you are voting no for.</p>
-            <draggable class="list-group" :list="list2" group="people" @change="log" itemKey="name">
+            <draggable class="list-group" :list="noList" group="people" @change="log" itemKey="name">
                 <template #item="{ element, index }">
                     <div class="list-group-item">
                         <img :src="element.avatar">
                         <span>{{ element.name }} {{ index }}</span>
-                        <a :href="element.intro">Intro</a>
-                    </div>
-                </template>
-            </draggable>
-        </div>
-        <div class="col center">
-            <h3>Abstain</h3>
-            <p>Any people you leave here won't be voted for neither positively nor negatively.</p>
-            <draggable class="list-group" :list="abstainList" group="people" @change="log" itemKey="name">
-                <template #item="{ element, index }">
-                    <div class="list-group-item">
-                        <img :src="element.avatar">
-                        <span>{{ element.name }} {{ index }}</span>
-                        <a :href="element.intro">Intro</a>
+                        <a :href="element.intro" target="_blank">Intro</a>
                     </div>
                 </template>
             </draggable>
@@ -60,15 +47,13 @@ export default {
             mailto: 'mailto:board@tauri.app',
             mailtoSubject: 'I am voting!'.replace(' ', '%20'),
             mailtoBody: 'Thank you for voting!'.replace(' ', '%20'),
-            list1: <Person[]>[
+            yesList: <Person[]>[
             ],
-            list2: [
-            ],
-            abstainList: [
+            noList: <Person[]>[
                 { name: "Robin van Boven A", avatar: 'https://avatars.githubusercontent.com/u/497556', intro: 'https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA' },
                 { name: "Robin van Boven B", avatar: 'https://avatars.githubusercontent.com/u/497556', intro: 'https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA' },
                 { name: "Robin van Boven C", avatar: 'https://avatars.githubusercontent.com/u/497556', intro: 'https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA' },
-            ]
+            ],
         };
     },
     methods: {
