@@ -16,13 +16,9 @@
           :href="
             mailto +
             '?subject=' +
-            mailtoSubject +
+            encodeURIComponent(mailtoSubject) +
             '&body=' +
-            mailtoBody +
-            '%0D%0A%0D%0AVoted Yes%0D%0A' +
-            yesList.map((val) => val.name).join('%0D%0A') +
-            '%0D%0A%0D%0AVoted No%0D%0A' +
-            noList.map((val) => val.name).join('%0D%0A')
+            encodeURIComponent(as_body())
           "
           >Vote</v-btn
         >
@@ -196,7 +192,7 @@ export default {
       noList: <Candidate[]>[],
       candidatesList: shuffle(CANDIDATES),
     };
-        },
+  },
   methods: {
     as_vote(): Vote {
       return {
@@ -204,7 +200,7 @@ export default {
         against: this.noList.map((c) => c.id),
         random_id: new_vote_id(),
       };
-        },
+    },
     as_body(): string {
       return `Thank you for voting!
 
@@ -217,7 +213,7 @@ export default {
         -- JSON vote --
         ${JSON.stringify(this.as_vote())}
         `;
-        },
+    },
   },
   computed: {
     dragOptions() {
