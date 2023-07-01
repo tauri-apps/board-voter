@@ -1,9 +1,10 @@
-@import "./vuetify/main.scss";
+@import './vuetify/main.scss';
 
 html,
 body {
   overflow: auto;
   background: transparent !important;
+  user-select: none;
 }
 
 body::-webkit-scrollbar {
