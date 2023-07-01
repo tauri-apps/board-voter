@@ -1,5 +1,5 @@
 <template>
-  <v-container style="max-width: 21cm;">
+  <v-container style="max-width: 21cm">
     <v-row>
       <v-col align="center">
         <v-btn
@@ -22,115 +22,136 @@
         >
       </v-col>
     </v-row>
+
     <v-row>
-      <v-col
-        cols="12"
-        style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
-        align="center"
+      <draggable
+        :list="yesList"
+        group="people"
+        itemKey="name"
+        class="draggable-container"
       >
-        <h1 class="text-center">Yes</h1>
-        <p class="text-center">
-          These are people you are voting yes for<br/>The higher they are in the
-          list the more you want to see them voted in
-        </p>
-        <draggable :list="yesList" group="people" itemKey="name">
-          <template #item="{ element, index }">
-            <v-card class="person-card">
-              <v-row align="center">
-                <v-col cols="3" sm="2" md="1">
-                  <v-avatar class="ma-3" size="75" rounded="1">
-                    <v-img :src="element.avatar"></v-img>
-                  </v-avatar>
-                </v-col>
-                <v-col justify="center">
-                  <v-card-title>{{ element.name }}</v-card-title>
-                </v-col>
-                <v-col align="end">
-                  <v-btn
-                    color="info"
-                    height="100"
-                    variant="tonal"
-                    :href="element.intro"
-                    target="_blank"
-                    >Readme</v-btn
-                  >
-                </v-col>
-              </v-row>
-            </v-card>
-          </template>
-        </draggable>
-      </v-col>
-      <v-col
+        <template #header>
+          <h1 class="text-center">Yes</h1>
+          <p class="text-center">
+            You think these candidates <i>would</i> be suitable as Directors<br />Ordered
+            of which you prefer most to least
+          </p>
+        </template>
+        <template #item="{ element, index }">
+          <v-card class="person-card">
+            <v-row align="center">
+              <v-col cols="1">
+                <span
+                  style="
+                    padding: 0.5cm;
+                    display: inline-block;
+                    font-size: large;
+                  "
+                  >#{{ index + 1 }}</span
+                >
+              </v-col>
+              <v-col cols="3" sm="2" md="1">
+                <v-avatar class="ma-3" size="75" rounded="1">
+                  <v-img :src="element.avatar"></v-img>
+                </v-avatar>
+              </v-col>
+              <v-col justify="center">
+                <v-card-title style="margin-left: 0.5cm">{{
+                  element.name
+                }}</v-card-title>
+              </v-col>
+              <v-col align="end">
+                <v-btn
+                  color="info"
+                  height="100"
+                  variant="tonal"
+                  :href="element.intro"
+                  target="_blank"
+                  >Readme</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-card>
+        </template>
+      </draggable>
+
+      <draggable
         v-if="candidatesList.length > 0"
-        cols="12"
-        style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
-        align="center"
+        :list="candidatesList"
+        group="people"
+        itemKey="name"
+        class="draggable-container"
       >
-        <h1 class="text-center">Candidates</h1>
-        <p class="text-center">
-          You have to vote either yes or no on all of them
-        </p>
-        <draggable :list="candidatesList" group="people" itemKey="name">
-          <template #item="{ element, index }">
-            <v-card class="person-card"> 
-              <v-row align="center">
-                <v-col cols="3" sm="2" md="1">
-                  <v-avatar class="ma-3" size="75" rounded="1">
-                    <v-img :src="element.avatar"></v-img>
-                  </v-avatar>
-                </v-col>
-                <v-col justify="center">
-                  <v-card-title>{{ element.name }}</v-card-title>
-                </v-col>
-                <v-col align="end">
-                  <v-btn
-                    color="info"
-                    height="100"
-                    variant="tonal"
-                    :href="element.intro"
-                    target="_blank"
-                    >Readme</v-btn
-                  >
-                </v-col>
-              </v-row>
-            </v-card>
-          </template>
-        </draggable>
-      </v-col>
-      <v-col
-        cols="12"
-        style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
-        align="center"
+        <template #header>
+          <h1 class="text-center">Candidates</h1>
+        </template>
+        <template #item="{ element, index }">
+          <v-card class="person-card">
+            <v-row align="center">
+              <v-col cols="3" sm="2" md="1">
+                <v-avatar class="ma-3" size="75" rounded="1">
+                  <v-img :src="element.avatar"></v-img>
+                </v-avatar>
+              </v-col>
+              <v-col justify="center">
+                <v-card-title style="margin-left: 0.5cm">{{
+                  element.name
+                }}</v-card-title>
+              </v-col>
+              <v-col align="end">
+                <v-btn
+                  color="info"
+                  height="100"
+                  variant="tonal"
+                  :href="element.intro"
+                  target="_blank"
+                  >Readme</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-card>
+        </template>
+      </draggable>
+
+      <draggable
+        :list="noList"
+        group="people"
+        itemKey="name"
+        class="draggable-container"
       >
-        <h1 class="text-center">No</h1>
-        <p class="text-center">These are people you are voting no for<br/>This is an active vote against a person, a vote of no confidence<br/>If you are not actively against the person being voted in, rank them lower instead of placing them here</p>
-        <draggable :list="noList" group="people" itemKey="name">
-          <template #item="{ element, index }">
-            <v-card class="person-card">
-              <v-row align="center">
-                <v-col cols="3" sm="2" md="1">
-                  <v-avatar class="ma-3" size="75" rounded="1">
-                    <v-img :src="element.avatar"></v-img>
-                  </v-avatar>
-                </v-col>
-                <v-col justify="center">
-                  <v-card-title>{{ element.name }}</v-card-title>
-                </v-col>
-                <v-col align="end">
-                  <v-btn
-                    color="info"
-                    height="100"
-                    variant="tonal"
-                    :href="element.intro"
-                    target="_blank"
-                    >Readme</v-btn
-                  >
-                </v-col>
-              </v-row>
-            </v-card>
-          </template>
-        </draggable>
-      </v-col>
+        <template #header>
+          <h1 class="text-center">No</h1>
+          <p class="text-center">
+            You think these candidates <i>wouldn't</i> be suitable as Directors
+          </p>
+        </template>
+        <template #item="{ element, index }">
+          <v-card class="person-card">
+            <v-row align="center">
+              <v-col cols="3" sm="2" md="1">
+                <v-avatar class="ma-3" size="75" rounded="1">
+                  <v-img :src="element.avatar"></v-img>
+                </v-avatar>
+              </v-col>
+              <v-col justify="center">
+                <v-card-title style="margin-left: 0.5cm">{{
+                  element.name
+                }}</v-card-title>
+              </v-col>
+              <v-col align="end">
+                <v-btn
+                  color="info"
+                  height="100"
+                  variant="tonal"
+                  :href="element.intro"
+                  target="_blank"
+                  >Readme</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-card>
+        </template>
+      </draggable>
     </v-row>
   </v-container>
 </template>
@@ -194,5 +215,16 @@ export default {
 .person-card {
   cursor: move;
   margin-top: 16px;
+  flex-grow: 1;
+}
+
+.draggable-container {
+  border: 1px solid #333;
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 0.5cm;
+  padding: 0.5cm;
+  display: flex;
+  flex-direction: column;
 }
 </style>
