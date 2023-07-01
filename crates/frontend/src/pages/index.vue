@@ -196,18 +196,18 @@ export default {
   methods: {
     as_vote(): Vote {
       return {
-        for: this.yesList.map((c) => c.id),
-        against: this.noList.map((c) => c.id),
+        yes: this.yesList.map((c) => c.id),
+        no: this.noList.map((c) => c.id),
         random_id: new_vote_id(),
       };
     },
     as_body(): string {
       return `Thank you for voting!
 
-        Voted FOR (in order of preference)
+        Voted Yes (in order of preference)
         ${this.yesList.map((c) => c.name).join("\n")}
         
-        Voted AGAINST
+        Voted No
         ${this.noList.map((c) => c.name).join("\n")}
         
         -- JSON vote --
