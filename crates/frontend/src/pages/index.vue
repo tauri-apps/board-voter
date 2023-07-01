@@ -93,6 +93,23 @@ interface Person {
     avatar: string;
     intro: string;
 }
+function shuffle(array: Person[]) {
+    let currentIndex = array.length, randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
 export default {
     data() {
         return {
@@ -103,11 +120,11 @@ export default {
             ],
             noList: <Person[]>[
             ],
-            candidatesList: <Person[]>[
+            candidatesList: shuffle([
                 { name: "Robin van Boven A", avatar: 'https://avatars.githubusercontent.com/u/497556', intro: 'https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA' },
                 { name: "Robin van Boven B", avatar: 'https://avatars.githubusercontent.com/u/497556', intro: 'https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA' },
                 { name: "Robin van Boven C", avatar: 'https://avatars.githubusercontent.com/u/497556', intro: 'https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA' },
-            ]
+            ])
         };
     }
 };
