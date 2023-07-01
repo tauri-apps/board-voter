@@ -71,7 +71,7 @@
                   color="info"
                   height="100"
                   variant="tonal"
-                  :href="element.intro"
+                  :href="element.intro_url"
                   target="_blank"
                   >Readme</v-btn
                 >
@@ -110,7 +110,7 @@
                   color="info"
                   height="100"
                   variant="tonal"
-                  :href="element.intro"
+                  :href="element.intro_url"
                   target="_blank"
                   >Readme</v-btn
                 >
@@ -150,7 +150,7 @@
                   color="info"
                   height="100"
                   variant="tonal"
-                  :href="element.intro"
+                  :href="element.intro_url"
                   target="_blank"
                   >Readme</v-btn
                 >
@@ -164,14 +164,12 @@
 </template>
 
 <script lang="ts">
-interface Person {
-  name: string;
-  avatar: string;
-  intro: string;
-}
-function shuffle(array: Person[]) {
+import { Candidate, CANDIDATES } from "../system/candidates";
+import { new_vote_id, Vote } from "../system/vote";
+
+function shuffle(array: Candidate[]): Candidate[] {
   let currentIndex = array.length,
-    randomIndex;
+    randomIndex: number;
 
   // While there remain elements to shuffle.
   while (currentIndex != 0) {
@@ -188,32 +186,38 @@ function shuffle(array: Person[]) {
 
   return array;
 }
+
 export default {
   data() {
     return {
       mailto: "mailto:board@tauri.app",
-      mailtoSubject: "Tauri election 2023".replace(" ", "%20"),
-      mailtoBody: "Thank you for voting!".replace(" ", "%20"),
-      yesList: <Person[]>[],
-      noList: <Person[]>[],
-      candidatesList: shuffle([
-        {
-          name: "Robin van Boven A",
-          avatar: "https://avatars.githubusercontent.com/u/497556",
-          intro: "https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA",
-        },
-        {
-          name: "Robin van Boven B",
-          avatar: "https://avatars.githubusercontent.com/u/497556",
-          intro: "https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA",
-        },
-        {
-          name: "Robin van Boven C",
-          avatar: "https://avatars.githubusercontent.com/u/497556",
-          intro: "https://hackmd.io/IuH6Fp9CTv-TYKD2G7jxOA",
-        },
-      ]),
+      mailtoSubject: "Vote for Tauri Board Election 2023",
+      yesList: <Candidate[]>[],
+      noList: <Candidate[]>[],
+      candidatesList: shuffle(CANDIDATES),
     };
+        },
+  methods: {
+    as_vote(): Vote {
+      return {
+        for: this.yesList.map((c) => c.id),
+        against: this.noList.map((c) => c.id),
+        random_id: new_vote_id(),
+      };
+        },
+    as_body(): string {
+      return `Thank you for voting!
+
+        Voted FOR (in order of preference)
+        ${this.yesList.map((c) => c.name).join("\n")}
+        
+        Voted AGAINST
+        ${this.noList.map((c) => c.name).join("\n")}
+        
+        -- JSON vote --
+        ${JSON.stringify(this.as_vote())}
+        `;
+        },
   },
   computed: {
     dragOptions() {
