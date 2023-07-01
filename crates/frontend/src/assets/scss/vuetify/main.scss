@@ -1,0 +1,8 @@
+@use 'vuetify' with (
+  $utilities: yes,
+  $color-pack: false
+);
+
+.v-btn {
+  text-transform: none !important;
+}

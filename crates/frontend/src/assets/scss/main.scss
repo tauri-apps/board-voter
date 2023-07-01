@@ -1,0 +1,11 @@
+@import './vuetify/main.scss';
+
+html,
+body {
+  overflow: auto;
+  background: transparent !important;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
