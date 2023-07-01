@@ -3,5 +3,8 @@ export default defineNuxtConfig({
   ssr: false,
   srcDir: 'src',
   telemetry: false,
+  app: {
+    baseURL: '/board-voter/'
+  },
   devtools: { enabled: false }
 })
