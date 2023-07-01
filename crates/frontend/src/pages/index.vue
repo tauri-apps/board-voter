@@ -2,10 +2,16 @@
   <v-container style="max-width: 21cm">
     <v-row>
       <v-col align="center">
+        <h1>Tauri Board Vote 2023</h1>
+        <p>
+          For each of the following candidates, are you in favor of them
+          becoming a Tauri Board Director?
+        </p>
         <v-btn
           color="success"
           width="5cm"
           height="1.25cm"
+          style="margin-top: 0.5cm"
           :disabled="candidatesList.length > 0"
           :href="
             mailto +
@@ -18,7 +24,7 @@
             '%0D%0A%0D%0AVoted No%0D%0A' +
             noList.map((val) => val.name).join('%0D%0A')
           "
-          >Submit</v-btn
+          >Vote</v-btn
         >
       </v-col>
     </v-row>
@@ -31,7 +37,7 @@
         class="draggable-container"
       >
         <template #header>
-          <h1 class="text-center">Yes</h1>
+          <h2 class="text-center">Yes</h2>
           <p class="text-center">
             You think these candidates <i>would</i> be suitable as Directors<br />Ordered
             of which you prefer most to least
@@ -84,7 +90,7 @@
         v-bind="dragOptions"
       >
         <template #header>
-          <h1 class="text-center">Candidates</h1>
+          <h2 class="text-center">Candidates</h2>
         </template>
         <template #item="{ element, index }">
           <v-card class="person-card">
@@ -121,7 +127,7 @@
         class="draggable-container"
       >
         <template #header>
-          <h1 class="text-center">No</h1>
+          <h2 class="text-center">No</h2>
           <p class="text-center">
             You think these candidates <i>wouldn't</i> be suitable as Directors
           </p>
