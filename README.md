@@ -1,63 +1,23 @@
-# Nuxt 3 Minimal Starter
+<div align="center">
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Tauri Board Voter
 
-## Setup
+A voting system
 
-Make sure to install the dependencies:
+</div>
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Getting started
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
+pnpm i -r
+cd crates/backend
+pnpm tauri dev
 ```
 
-## Production
+## Tests
 
-Build the application for production:
+You can run the projects tests using Docker. You don't need Docker but it's the easiest method by far after you've ran it once.
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
+docker build -f docker/test.dockerfile -t throwaway .
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

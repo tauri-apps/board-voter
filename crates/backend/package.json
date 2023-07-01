@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio run wdio.conf.js"
+  },
+  "keywords": [
+    "tauri"
+  ],
+  "author": "Simon Hyll <hyllsimon@gmail.com>",
+  "dependencies": {
+    "@tauri-apps/cli": "^1.4.0",
+    "@wdio/cli": "^8.11.2",
+    "@wdio/local-runner": "^8.11.2",
+    "@wdio/mocha-framework": "^8.11.0",
+    "@wdio/spec-reporter": "^8.11.2"
+  }
+}

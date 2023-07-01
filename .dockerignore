@@ -1,0 +1,4 @@
+.git/
+target/
+node_modules/
+crates/*/node_modules/
