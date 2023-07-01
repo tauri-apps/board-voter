@@ -31,12 +31,13 @@
         group="people"
         itemKey="name"
         class="draggable-container"
+        v-bind="dragOptions"
       >
         <template #header>
           <h2 class="text-center">Yes</h2>
           <p class="text-center">
-            You think these candidates <i>would</i> be suitable as Directors<br />Ordered
-            from which you prefer most to least
+            You think these candidates <b><i>would</i></b> be suitable as
+            Directors<br />Ordered from which you prefer most to least
           </p>
         </template>
         <template #item="{ element, index }">
@@ -121,11 +122,13 @@
         group="people"
         itemKey="name"
         class="draggable-container"
+        v-bind="dragOptions"
       >
         <template #header>
           <h2 class="text-center">No</h2>
           <p class="text-center">
-            You think these candidates <i>wouldn't</i> be suitable as Directors
+            You think these candidates <b><i>wouldn't</i></b> be suitable as
+            Directors
           </p>
         </template>
         <template #item="{ element, index }">
