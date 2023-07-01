@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container style="max-width: 21cm;">
     <v-row>
       <v-col align="center">
         <v-btn
@@ -26,6 +26,7 @@
       <v-col
         cols="12"
         style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
+        align="center"
       >
         <h1 class="text-center">Yes</h1>
         <p class="text-center">
@@ -62,6 +63,7 @@
       <v-col
         cols="12"
         style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
+        align="center"
       >
         <h1 class="text-center">No</h1>
         <p class="text-center">These are people you are voting no for.</p>
@@ -96,6 +98,7 @@
         v-if="candidatesList.length > 0"
         cols="12"
         style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
+        align="center"
       >
         <h1 class="text-center">Candidates</h1>
         <p class="text-center">
@@ -103,7 +106,7 @@
         </p>
         <draggable :list="candidatesList" group="people" itemKey="name">
           <template #item="{ element, index }">
-            <v-card class="person-card">
+            <v-card class="person-card"> 
               <v-row align="center">
                 <v-col cols="3" sm="2" md="1">
                   <v-avatar class="ma-3" size="75" rounded="1">
