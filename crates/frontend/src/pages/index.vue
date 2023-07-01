@@ -30,44 +30,10 @@
       >
         <h1 class="text-center">Yes</h1>
         <p class="text-center">
-          These are people you are voting yes for. The higher they are in the
-          list the more you want to see them voted in.
+          These are people you are voting yes for<br/>The higher they are in the
+          list the more you want to see them voted in
         </p>
         <draggable :list="yesList" group="people" itemKey="name">
-          <template #item="{ element, index }">
-            <v-card class="person-card">
-              <v-row align="center">
-                <v-col cols="3" sm="2" md="1">
-                  <v-avatar class="ma-3" size="75" rounded="1">
-                    <v-img :src="element.avatar"></v-img>
-                  </v-avatar>
-                </v-col>
-                <v-col justify="center">
-                  <v-card-title>{{ element.name }}</v-card-title>
-                </v-col>
-                <v-col align="end">
-                  <v-btn
-                    color="info"
-                    height="100"
-                    variant="tonal"
-                    :href="element.intro"
-                    target="_blank"
-                    >Readme</v-btn
-                  >
-                </v-col>
-              </v-row>
-            </v-card>
-          </template>
-        </draggable>
-      </v-col>
-      <v-col
-        cols="12"
-        style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
-        align="center"
-      >
-        <h1 class="text-center">No</h1>
-        <p class="text-center">These are people you are voting no for.</p>
-        <draggable :list="noList" group="people" itemKey="name">
           <template #item="{ element, index }">
             <v-card class="person-card">
               <v-row align="center">
@@ -107,6 +73,40 @@
         <draggable :list="candidatesList" group="people" itemKey="name">
           <template #item="{ element, index }">
             <v-card class="person-card"> 
+              <v-row align="center">
+                <v-col cols="3" sm="2" md="1">
+                  <v-avatar class="ma-3" size="75" rounded="1">
+                    <v-img :src="element.avatar"></v-img>
+                  </v-avatar>
+                </v-col>
+                <v-col justify="center">
+                  <v-card-title>{{ element.name }}</v-card-title>
+                </v-col>
+                <v-col align="end">
+                  <v-btn
+                    color="info"
+                    height="100"
+                    variant="tonal"
+                    :href="element.intro"
+                    target="_blank"
+                    >Readme</v-btn
+                  >
+                </v-col>
+              </v-row>
+            </v-card>
+          </template>
+        </draggable>
+      </v-col>
+      <v-col
+        cols="12"
+        style="border: 1px solid #333; border-radius: 16px; margin-top: 0.5cm"
+        align="center"
+      >
+        <h1 class="text-center">No</h1>
+        <p class="text-center">These are people you are voting no for<br/>This is an active vote against a person, a vote of no confidence<br/>If you are not actively against the person being voted in, rank them lower instead of placing them here</p>
+        <draggable :list="noList" group="people" itemKey="name">
+          <template #item="{ element, index }">
+            <v-card class="person-card">
               <v-row align="center">
                 <v-col cols="3" sm="2" md="1">
                   <v-avatar class="ma-3" size="75" rounded="1">
