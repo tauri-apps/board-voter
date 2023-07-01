@@ -36,7 +36,7 @@
           <h2 class="text-center">Yes</h2>
           <p class="text-center">
             You think these candidates <i>would</i> be suitable as Directors<br />Ordered
-            of which you prefer most to least
+            from which you prefer most to least
           </p>
         </template>
         <template #item="{ element, index }">
