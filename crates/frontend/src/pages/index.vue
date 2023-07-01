@@ -81,6 +81,7 @@
         group="people"
         itemKey="name"
         class="draggable-container"
+        v-bind="dragOptions"
       >
         <template #header>
           <h1 class="text-center">Candidates</h1>
@@ -208,6 +209,13 @@ export default {
       ]),
     };
   },
+  computed: {
+    dragOptions() {
+      return {
+        animation: 200,
+      };
+    },
+  },
 };
 </script>
 
@@ -216,6 +224,7 @@ export default {
   cursor: move;
   margin-top: 16px;
   flex-grow: 1;
+  transition: transform 0.5s;
 }
 
 .draggable-container {
