@@ -4,14 +4,19 @@
       <v-col align="center">
         <h1>Tauri Board Election 2023</h1>
         <p>
-          For each of the following candidates, are you in favor of them
-          becoming a Tauri Board Director?
+          This year we invite <b>Tauri Working Group members</b> to cast their
+          vote. This page provides the voting tool. For general information
+          about this election see
+          <a
+            href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2023"
+            >the GitHub documentation</a
+          >
         </p>
         <v-btn
           color="success"
           width="5cm"
           height="1.25cm"
-          style="margin-top: 0.5cm"
+          class="vote"
           :disabled="candidatesList.length > 0"
           :href="
             mailto +
@@ -22,6 +27,10 @@
           "
           >Vote</v-btn
         >
+        <p>
+          For each of the following candidates, are you in favor of them
+          becoming a Tauri Board Director?
+        </p>
       </v-col>
     </v-row>
 
@@ -37,7 +46,7 @@
           <h2 class="text-center">Yes</h2>
           <p class="text-center">
             You think these candidates <b><i>would</i></b> be suitable as
-            Directors<br />Ordered from which you prefer most to least
+            Directors.<br />Ordered from which you prefer most to least.
           </p>
         </template>
         <template #item="{ element, index }">
@@ -88,6 +97,10 @@
       >
         <template #header>
           <h2 class="text-center">Candidates</h2>
+          <p class="text-center">
+            Please <i>drag</i> each of these candidates into the Yes or No
+            section.
+          </p>
         </template>
         <template #item="{ element, index }">
           <v-card class="person-card">
@@ -128,7 +141,7 @@
           <h2 class="text-center">No</h2>
           <p class="text-center">
             You think these candidates <b><i>wouldn't</i></b> be suitable as
-            Directors
+            Directors.
           </p>
         </template>
         <template #item="{ element, index }">
@@ -229,6 +242,11 @@ export default {
 </script>
 
 <style>
+.vote {
+  margin-top: 0.5cm;
+  margin-bottom: 0.5cm;
+}
+
 .person-card {
   cursor: move;
   margin-top: 16px;
