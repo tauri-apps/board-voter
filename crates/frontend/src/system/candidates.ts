@@ -11,6 +11,12 @@ export interface Candidate {
 
 export const CANDIDATES: Candidate[] = [
   {
+    id: "david-lemarier",
+    name: "David Lemarier",
+    avatar: "https://avatars.githubusercontent.com/u/22237916?v=4&s=200",
+    intro_url: `${CANDIDATE_PAGE}#david-lemarier`,
+  },
+  {
     id: "bill-avery",
     name: "Bill Avery",
     avatar: "avatar-bill.png",
