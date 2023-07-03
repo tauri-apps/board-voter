@@ -11,21 +11,27 @@ export interface Candidate {
 
 export const CANDIDATES: Candidate[] = [
   {
+    id: "bill-avery",
+    name: "Bill Avery",
+    avatar: "avatar-bill.png",
+    intro_url: `${CANDIDATE_PAGE}#bill-avery`,
+  },
+  {
+    id: "jacob-bolda",
+    name: "Jacob Bolda",
+    avatar: "avatar-jacob.jpg",
+    intro_url: `${CANDIDATE_PAGE}#jacob-bolda`,
+  },
+  {
+    id: "zack-chapple",
+    name: "Zach Chapple",
+    avatar: "avatar-zack.jpg",
+    intro_url: `${CANDIDATE_PAGE}#zack-chapple`,
+  },
+  {
     id: "robin-van-boven",
     name: "Robin van Boven",
-    avatar: "https://avatars.githubusercontent.com/u/497556",
-    intro_url: `${CANDIDATE_PAGE}#robin-van-boven`,
-  },
-  {
-    id: "robin-b",
-    name: "Robin B",
-    avatar: "https://avatars.githubusercontent.com/u/497556",
-    intro_url: `${CANDIDATE_PAGE}#robin-van-boven`,
-  },
-  {
-    id: "robin-c",
-    name: "Robin C",
-    avatar: "https://avatars.githubusercontent.com/u/497556",
+    avatar: "avatar-robin.png",
     intro_url: `${CANDIDATE_PAGE}#robin-van-boven`,
   },
 ];

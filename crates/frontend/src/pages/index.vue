@@ -98,8 +98,7 @@
         <template #header>
           <h2 class="text-center">Candidates</h2>
           <p class="text-center">
-            Please <i>drag</i> each of these candidates into the Yes or No
-            section.
+            Please drag each of these candidates into the Yes or No section.
           </p>
         </template>
         <template #item="{ element, index }">
