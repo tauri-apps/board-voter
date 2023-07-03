@@ -24,7 +24,7 @@ export const CANDIDATES: Candidate[] = [
   },
   {
     id: "zack-chapple",
-    name: "Zach Chapple",
+    name: "Zack Chapple",
     avatar: "avatar-zack.jpg",
     intro_url: `${CANDIDATE_PAGE}#zack-chapple`,
   },
