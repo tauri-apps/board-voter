@@ -46,21 +46,26 @@
           <h2 class="text-center">Yes</h2>
           <p class="text-center">
             You think these candidates <b><i>would</i></b> be suitable as
-            Directors.<br />Ordered from which you prefer most to least.
+            Directors.<br />In no particular order. (<a
+              href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2023#what-about-order-of-preference"
+              title="What about order of preference?"
+              >Why?</a
+            >)
           </p>
         </template>
         <template #item="{ element, index }">
           <v-card class="person-card">
             <v-row align="center">
               <v-col cols="1">
-                <span
+                &nbsp;
+                <!-- <span
                   style="
                     padding: 0.5cm;
                     display: inline-block;
                     font-size: large;
                   "
                   >#{{ index + 1 }}</span
-                >
+                > -->
               </v-col>
               <v-col cols="2" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
@@ -218,16 +223,17 @@ export default {
     },
     as_body(): string {
       return `Thank you for voting!
+        Here is a summary of your vote.
+        Make sure you send the email.
 
-        Voted Yes (in order of preference)
+        -- Voted Yes --
         ${this.yesList.map((c) => c.name).join("\n")}
         
-        Voted No
+        -- Voted No --
         ${this.noList.map((c) => c.name).join("\n")}
         
         -- JSON vote --
-        ${JSON.stringify(this.as_vote())}
-        `;
+        ${JSON.stringify(this.as_vote())}`;
     },
   },
   computed: {
