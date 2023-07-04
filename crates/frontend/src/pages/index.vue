@@ -1,7 +1,7 @@
 <template>
   <v-container style="max-width: 21cm">
     <v-row>
-      <v-col align="center">
+      <v-col align="center" class="header">
         <h1>Tauri Board Election 2023</h1>
         <p>
           This year we invite <b>Tauri Working Group members</b> to cast their
@@ -11,6 +11,9 @@
             href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2023"
             >the GitHub documentation</a
           >
+        </p>
+        <p>
+          <b>You can vote on July 5th through July 12th, 2023.</b>
         </p>
         <v-btn
           color="success"
@@ -247,7 +250,7 @@ export default {
 </script>
 
 <style>
-.vote {
+.header p {
   margin-top: 0.5cm;
   margin-bottom: 0.5cm;
 }
