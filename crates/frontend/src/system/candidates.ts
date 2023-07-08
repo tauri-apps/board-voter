@@ -13,7 +13,7 @@ export const CANDIDATES: Candidate[] = [
   {
     id: "david-lemarier",
     name: "David Lemarier",
-    avatar: "avatar-david.png",
+    avatar: "avatar-david.jpg",
     intro_url: `${CANDIDATE_PAGE}#david-lemarier`,
   },
   {
