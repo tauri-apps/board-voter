@@ -1,5 +1,5 @@
 <template>
-  <v-app @contextmenu.prevent>
+  <v-app>
     <NuxtLayout></NuxtLayout>
   </v-app>
 </template>
