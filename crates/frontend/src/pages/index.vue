@@ -31,6 +31,26 @@
           >Vote</v-btn
         >
         <p>
+          <span class="hint" v-if="candidatesList.length > 0"
+            >Please drag each of the candidates into the Yes or No
+            section.</span
+          >
+          <a href="#" v-if="candidatesList.length == 0" @click="clickFallback"
+            >Button not working?</a
+          >
+        </p>
+        <div v-show="showFallback" class="fallback">
+          <p>You can also email the following manually:</p>
+          <b>To:</b> <code>board@tauri.app</code><br />
+          <b>Subject:</b> <code>{{ mailtoSubject }}</code
+          ><br />
+          <code
+            class="body"
+            v-html="as_body().replaceAll('\n', '<br>\n')"
+          ></code
+          ><br />
+        </div>
+        <p>
           For each of the following candidates, are you in favor of them
           becoming a Tauri Board Director?
         </p>
@@ -214,6 +234,7 @@ export default {
       yesList: <Candidate[]>[],
       noList: <Candidate[]>[],
       candidatesList: shuffle(CANDIDATES),
+      showFallback: false,
     };
   },
   methods: {
@@ -237,6 +258,12 @@ export default {
         
         -- JSON vote --
         ${JSON.stringify(this.as_vote())}`;
+    },
+    clickFallback(e: Event): boolean {
+      e.preventDefault();
+      // Once opened, keep it open. But only open when you've decided on all candidates.
+      this.showFallback = this.showFallback || this.candidatesList.length == 0;
+      return true;
     },
   },
   computed: {
@@ -274,5 +301,25 @@ export default {
 
 .right {
   text-align: right;
+}
+
+.fallback {
+  text-align: left;
+  width: 75%;
+}
+
+.fallback code {
+  user-select: all;
+}
+
+code.body {
+  display: block;
+  border: 1px solid #333;
+  padding: 0.5cm;
+}
+
+.hint {
+  font-style: italic;
+  color: #333;
 }
 </style>
