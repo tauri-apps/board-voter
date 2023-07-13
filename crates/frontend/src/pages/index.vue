@@ -13,9 +13,10 @@
           >
         </p>
         <p>
-          <b>You can vote on July 5th through July 12th, 2023.</b>
+          <b>Voting ended after July 12th, 2023.</b>
+          Please refer to the GitHub repository for results.
         </p>
-        <v-btn
+        <!-- <v-btn
           color="success"
           width="5cm"
           height="1.25cm"
@@ -53,11 +54,11 @@
         <p>
           For each of the following candidates, are you in favor of them
           becoming a Tauri Board Director?
-        </p>
+        </p> -->
       </v-col>
     </v-row>
 
-    <v-row>
+    <!-- <v-row>
       <draggable
         :list="yesList"
         group="people"
@@ -81,14 +82,6 @@
             <v-row align="center">
               <v-col cols="1">
                 &nbsp;
-                <!-- <span
-                  style="
-                    padding: 0.5cm;
-                    display: inline-block;
-                    font-size: large;
-                  "
-                  >#{{ index + 1 }}</span
-                > -->
               </v-col>
               <v-col cols="2" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
@@ -198,7 +191,7 @@
           </v-card>
         </template>
       </draggable>
-    </v-row>
+    </v-row> -->
   </v-container>
 </template>
 
@@ -229,42 +222,39 @@ function shuffle(array: Candidate[]): Candidate[] {
 export default {
   data() {
     return {
-      mailto: "mailto:board@tauri.app",
-      mailtoSubject: "Vote for Tauri Board Election 2023",
-      yesList: <Candidate[]>[],
-      noList: <Candidate[]>[],
-      candidatesList: shuffle(CANDIDATES),
-      showFallback: false,
+      // mailto: "mailto:board@tauri.app",
+      // mailtoSubject: "Vote for Tauri Board Election 2023",
+      // yesList: <Candidate[]>[],
+      // noList: <Candidate[]>[],
+      // candidatesList: shuffle(CANDIDATES),
+      // showFallback: false,
     };
   },
   methods: {
-    as_vote(): Vote {
-      return {
-        yes: this.yesList.map((c) => c.id),
-        no: this.noList.map((c) => c.id),
-        random_id: new_vote_id(),
-      };
-    },
-    as_body(): string {
-      return `Thank you for voting!
-        Here is a summary of your vote.
-        Make sure you send the email.
-
-        -- Voted Yes --
-        ${this.yesList.map((c) => c.name).join("\n")}
-        
-        -- Voted No --
-        ${this.noList.map((c) => c.name).join("\n")}
-        
-        -- JSON vote --
-        ${JSON.stringify(this.as_vote())}`;
-    },
-    clickFallback(e: Event): boolean {
-      e.preventDefault();
-      // Once opened, keep it open. But only open when you've decided on all candidates.
-      this.showFallback = this.showFallback || this.candidatesList.length == 0;
-      return true;
-    },
+    // as_vote(): Vote {
+    //   return {
+    //     yes: this.yesList.map((c) => c.id),
+    //     no: this.noList.map((c) => c.id),
+    //     random_id: new_vote_id(),
+    //   };
+    // },
+    // as_body(): string {
+    //   return `Thank you for voting!
+    //     Here is a summary of your vote.
+    //     Make sure you send the email.
+    //     -- Voted Yes --
+    //     ${this.yesList.map((c) => c.name).join("\n")}
+    //     -- Voted No --
+    //     ${this.noList.map((c) => c.name).join("\n")}
+    //     -- JSON vote --
+    //     ${JSON.stringify(this.as_vote())}`;
+    // },
+    // clickFallback(e: Event): boolean {
+    //   e.preventDefault();
+    //   // Once opened, keep it open. But only open when you've decided on all candidates.
+    //   this.showFallback = this.showFallback || this.candidatesList.length == 0;
+    //   return true;
+    // },
   },
   computed: {
     dragOptions() {
