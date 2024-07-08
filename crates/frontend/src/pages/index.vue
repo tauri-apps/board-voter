@@ -71,7 +71,7 @@
           <p class="text-center">
             You think these candidates <b><i>would</i></b> be suitable as
             Directors.<br />In no particular order. (<a
-              href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2023#what-about-order-of-preference"
+              href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2024#what-about-order-of-preference"
               title="What about order of preference?"
               >Why?</a
             >)
@@ -223,7 +223,7 @@ export default {
   data() {
     return {
       mailto: "mailto:board@tauri.app",
-      mailtoSubject: "Vote for Tauri Board Election 2023",
+      mailtoSubject: "Vote for Tauri Board Election 2024",
       yesList: <Candidate[]>[],
       noList: <Candidate[]>[],
       candidatesList: shuffle(CANDIDATES),
