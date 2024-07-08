@@ -2,21 +2,21 @@
   <v-container style="max-width: 21cm">
     <v-row>
       <v-col align="center" class="header">
-        <h1>Tauri Board Election 2023</h1>
+        <h1>Tauri Board Election 2024</h1>
         <p>
           This year we invite <b>Tauri Working Group members</b> to cast their
           vote. This page provides the voting tool. For general information
           about this election see
           <a
-            href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2023"
+            href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2024"
             >the GitHub documentation</a
           >
         </p>
-        <p>
-          <b>Voting ended after July 12th, 2023.</b>
+        <!-- <p>
+          <b>Voting ended after July 12th, 2024.</b>
           Please refer to the GitHub repository for results.
-        </p>
-        <!-- <v-btn
+        </p> -->
+        <v-btn
           color="success"
           width="5cm"
           height="1.25cm"
@@ -54,11 +54,11 @@
         <p>
           For each of the following candidates, are you in favor of them
           becoming a Tauri Board Director?
-        </p> -->
+        </p>
       </v-col>
     </v-row>
 
-    <!-- <v-row>
+    <v-row>
       <draggable
         :list="yesList"
         group="people"
@@ -85,7 +85,7 @@
               </v-col>
               <v-col cols="2" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
-                  <v-img :src="element.avatar"></v-img>
+                  <v-img :src="avatarIdToGitHubLink(element.avatar)"></v-img>
                 </v-avatar>
               </v-col>
               <v-col justify="center">
@@ -127,7 +127,7 @@
             <v-row align="center">
               <v-col cols="3" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
-                  <v-img :src="element.avatar"></v-img>
+                  <v-img :src="avatarIdToGitHubLink(element.avatar)"></v-img>
                 </v-avatar>
               </v-col>
               <v-col justify="center">
@@ -169,7 +169,7 @@
             <v-row align="center">
               <v-col cols="3" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
-                  <v-img :src="element.avatar"></v-img>
+                  <v-img :src="avatarIdToGitHubLink(element.avatar)"></v-img>
                 </v-avatar>
               </v-col>
               <v-col justify="center">
@@ -191,7 +191,7 @@
           </v-card>
         </template>
       </draggable>
-    </v-row> -->
+    </v-row>
   </v-container>
 </template>
 
@@ -222,39 +222,42 @@ function shuffle(array: Candidate[]): Candidate[] {
 export default {
   data() {
     return {
-      // mailto: "mailto:board@tauri.app",
-      // mailtoSubject: "Vote for Tauri Board Election 2023",
-      // yesList: <Candidate[]>[],
-      // noList: <Candidate[]>[],
-      // candidatesList: shuffle(CANDIDATES),
-      // showFallback: false,
+      mailto: "mailto:board@tauri.app",
+      mailtoSubject: "Vote for Tauri Board Election 2023",
+      yesList: <Candidate[]>[],
+      noList: <Candidate[]>[],
+      candidatesList: shuffle(CANDIDATES),
+      showFallback: false,
     };
   },
   methods: {
-    // as_vote(): Vote {
-    //   return {
-    //     yes: this.yesList.map((c) => c.id),
-    //     no: this.noList.map((c) => c.id),
-    //     random_id: new_vote_id(),
-    //   };
-    // },
-    // as_body(): string {
-    //   return `Thank you for voting!
-    //     Here is a summary of your vote.
-    //     Make sure you send the email.
-    //     -- Voted Yes --
-    //     ${this.yesList.map((c) => c.name).join("\n")}
-    //     -- Voted No --
-    //     ${this.noList.map((c) => c.name).join("\n")}
-    //     -- JSON vote --
-    //     ${JSON.stringify(this.as_vote())}`;
-    // },
-    // clickFallback(e: Event): boolean {
-    //   e.preventDefault();
-    //   // Once opened, keep it open. But only open when you've decided on all candidates.
-    //   this.showFallback = this.showFallback || this.candidatesList.length == 0;
-    //   return true;
-    // },
+    avatarIdToGitHubLink(id: number) {
+      return `https://avatars.githubusercontent.com/u/${id}?v=4`
+    },
+    as_vote(): Vote {
+      return {
+        yes: this.yesList.map((c) => c.id),
+        no: this.noList.map((c) => c.id),
+        random_id: new_vote_id(),
+      };
+    },
+    as_body(): string {
+      return `Thank you for voting!
+        Here is a summary of your vote.
+        Make sure you send the email.
+        -- Voted Yes --
+        ${this.yesList.map((c) => c.name).join("\n")}
+        -- Voted No --
+        ${this.noList.map((c) => c.name).join("\n")}
+        -- JSON vote --
+        ${JSON.stringify(this.as_vote())}`;
+    },
+    clickFallback(e: Event): boolean {
+      e.preventDefault();
+      // Once opened, keep it open. But only open when you've decided on all candidates.
+      this.showFallback = this.showFallback || this.candidatesList.length == 0;
+      return true;
+    },
   },
   computed: {
     dragOptions() {
