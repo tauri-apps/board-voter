@@ -28,4 +28,10 @@ export const CANDIDATES: Candidate[] = [
     avatar: "3301043",
     intro_url: `${CANDIDATE_PAGE}#chip-reed`,
   },
+  {
+    id: "fabian-lars",
+    name: "Fabian-Lars",
+    avatar: "30730186",
+    intro_url: `${CANDIDATE_PAGE}#fabian-lars`,
+  },
 ];
