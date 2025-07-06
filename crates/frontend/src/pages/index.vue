@@ -194,8 +194,8 @@
 </template>
 
 <script lang="ts">
-import { Candidate, CANDIDATES } from "../system/candidates";
-import { new_vote_id, Vote } from "../system/vote";
+import { type Candidate, CANDIDATES } from "../system/candidates";
+import { type Vote, new_vote_id } from "../system/vote";
 
 function shuffle(array: Candidate[]): Candidate[] {
   let currentIndex = array.length,
