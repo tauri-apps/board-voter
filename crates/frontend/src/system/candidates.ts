@@ -1,5 +1,5 @@
 export const REPO_URL = "https://github.com/tauri-apps/governance-and-guidance";
-export const CANDIDATE_PAGE = `${REPO_URL}/blob/main/board-election-2024/Candidates.md`;
+export const CANDIDATE_PAGE = `${REPO_URL}/blob/main/board-election-2025/Candidates.md`;
 
 export type CandidateId = string;
 export interface Candidate {
@@ -11,15 +11,21 @@ export interface Candidate {
 
 export const CANDIDATES: Candidate[] = [
   {
-    id: "daniel-thompson-yvetot",
-    name: "Daniel Thompson-Yvetot",
-    avatar: "35242872",
-    intro_url: `${CANDIDATE_PAGE}#daniel-thompson-yvetot`,
+    id: "jacob-bolda",
+    name: "Jacob Bolda",
+    avatar: "2019387",
+    intro_url: `${CANDIDATE_PAGE}#jacob-bolda`,
   },
   {
-    id: "lucas-nogueira",
-    name: "Lucas Nogueira",
-    avatar: "20051258",
-    intro_url: `${CANDIDATE_PAGE}#lucas-nogueira`,
+    id: "bill-avery",
+    name: "Bill Avery",
+    avatar: "6502881",
+    intro_url: `${CANDIDATE_PAGE}#bill-avery`,
+  },
+  {
+    id: "chip-reed",
+    name: "Chip Reed",
+    avatar: "3301043",
+    intro_url: `${CANDIDATE_PAGE}#chip-reed`,
   },
 ];
