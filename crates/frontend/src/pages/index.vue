@@ -2,18 +2,18 @@
   <v-container style="max-width: 21cm">
     <v-row>
       <v-col align="center" class="header">
-        <h1>Tauri Board Election 2024</h1>
+        <h1>Tauri Board Election 2025</h1>
         <p>
           This year we invite <b>Tauri Working Group members</b> to cast their
           vote. This page provides the voting tool. For general information
           about this election see
           <a
-            href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2024"
+            href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2025"
             >the GitHub documentation</a
           >
         </p>
         <!-- <p>
-          <b>Voting ended after July 12th, 2024.</b>
+          <b>Voting ended after July 14th, 2025.</b>
           Please refer to the GitHub repository for results.
         </p> -->
         <v-btn
@@ -71,7 +71,7 @@
           <p class="text-center">
             You think these candidates <b><i>would</i></b> be suitable as
             Directors.<br />In no particular order. (<a
-              href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2024#what-about-order-of-preference"
+              href="https://github.com/tauri-apps/governance-and-guidance/tree/main/board-election-2025#what-about-order-of-preference"
               title="What about order of preference?"
               >Why?</a
             >)
@@ -80,9 +80,7 @@
         <template #item="{ element, index }">
           <v-card class="person-card">
             <v-row align="center">
-              <v-col cols="1">
-                &nbsp;
-              </v-col>
+              <v-col cols="1"> &nbsp; </v-col>
               <v-col cols="2" class="right">
                 <v-avatar class="ma-3" size="75" rounded="1">
                   <v-img :src="avatarIdToGitHubLink(element.avatar)"></v-img>
@@ -196,8 +194,8 @@
 </template>
 
 <script lang="ts">
-import { Candidate, CANDIDATES } from "../system/candidates";
-import { new_vote_id, Vote } from "../system/vote";
+import { type Candidate, CANDIDATES } from "../system/candidates";
+import { type Vote, new_vote_id } from "../system/vote";
 
 function shuffle(array: Candidate[]): Candidate[] {
   let currentIndex = array.length,
@@ -223,7 +221,7 @@ export default {
   data() {
     return {
       mailto: "mailto:board@tauri.app",
-      mailtoSubject: "Vote for Tauri Board Election 2024",
+      mailtoSubject: "Vote for Tauri Board Election 2025",
       yesList: <Candidate[]>[],
       noList: <Candidate[]>[],
       candidatesList: shuffle(CANDIDATES),
@@ -232,7 +230,7 @@ export default {
   },
   methods: {
     avatarIdToGitHubLink(id: number) {
-      return `https://avatars.githubusercontent.com/u/${id}?v=4`
+      return `https://avatars.githubusercontent.com/u/${id}?v=4`;
     },
     as_vote(): Vote {
       return {

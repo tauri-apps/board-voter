@@ -1,3 +1,4 @@
+import { defineNuxtConfig } from "nuxt/config";
 import vuetify from "vite-plugin-vuetify";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -12,7 +13,9 @@ export default defineNuxtConfig({
   hooks: {
     "vite:extendConfig": async (config: any) => {
       config.plugins?.push(
-        vuetify({ styles: { configFile: "assets/scss/variables.scss" } })
+        vuetify({
+          styles: { configFile: "assets/scss/variables.scss" },
+        })
       );
     },
   },
