@@ -12,53 +12,55 @@
             >the GitHub documentation</a
           >
         </p>
-        <!-- <p>
+        <p v-if="!electionActive">
           <b>Voting ended after July 14th, 2025.</b>
           Please refer to the GitHub repository for results.
-        </p> -->
-        <v-btn
-          color="success"
-          width="5cm"
-          height="1.25cm"
-          class="vote"
-          :disabled="candidatesList.length > 0"
-          :href="
-            mailto +
-            '?subject=' +
-            encodeURIComponent(mailtoSubject) +
-            '&body=' +
-            encodeURIComponent(as_body())
-          "
-          >Vote</v-btn
-        >
-        <p>
-          <span class="hint" v-if="candidatesList.length > 0"
-            >Please drag each of the candidates into the Yes or No
-            section.</span
-          >
-          <a href="#" v-if="candidatesList.length == 0" @click="clickFallback"
-            >Button not working?</a
-          >
         </p>
-        <div v-show="showFallback" class="fallback">
-          <p>You can also email the following manually:</p>
-          <b>To:</b> <code>board@tauri.app</code><br />
-          <b>Subject:</b> <code>{{ mailtoSubject }}</code
-          ><br />
-          <code
-            class="body"
-            v-html="as_body().replaceAll('\n', '<br>\n')"
-          ></code
-          ><br />
+        <div v-if="electionActive">
+          <v-btn
+            color="success"
+            width="5cm"
+            height="1.25cm"
+            class="vote"
+            :disabled="candidatesList.length > 0"
+            :href="
+              mailto +
+              '?subject=' +
+              encodeURIComponent(mailtoSubject) +
+              '&body=' +
+              encodeURIComponent(as_body())
+            "
+            >Vote</v-btn
+          >
+          <p>
+            <span class="hint" v-if="candidatesList.length > 0"
+              >Please drag each of the candidates into the Yes or No
+              section.</span
+            >
+            <a href="#" v-if="candidatesList.length == 0" @click="clickFallback"
+              >Button not working?</a
+            >
+          </p>
+          <div v-show="showFallback" class="fallback">
+            <p>You can also email the following manually:</p>
+            <b>To:</b> <code>board@tauri.app</code><br />
+            <b>Subject:</b> <code>{{ mailtoSubject }}</code
+            ><br />
+            <code
+              class="body"
+              v-html="as_body().replaceAll('\n', '<br>\n')"
+            ></code
+            ><br />
+          </div>
+          <p>
+            For each of the following candidates, are you in favor of them
+            becoming a Tauri Board Director?
+          </p>
         </div>
-        <p>
-          For each of the following candidates, are you in favor of them
-          becoming a Tauri Board Director?
-        </p>
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row v-if="electionActive">
       <draggable
         :list="yesList"
         group="people"
@@ -226,6 +228,8 @@ export default {
       noList: <Candidate[]>[],
       candidatesList: shuffle(CANDIDATES),
       showFallback: false,
+      // Whether voting is currently open.
+      electionActive: false,
     };
   },
   methods: {
